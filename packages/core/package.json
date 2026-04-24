@@ -1,0 +1,46 @@
+{
+	"name": "@ionic-form-tools/core",
+	"version": "1.0.0",
+	"description": "Reusable Ionic Form Components with Vuelidate",
+	"main": "./dist/index.cjs.js",
+	"module": "./dist/index.es.js",
+	"types": "./dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.es.js",
+			"require": "./dist/index.cjs.js"
+		}
+	},
+	"scripts": {
+		"build": "vue-tsc && vite build",
+		"dev": "vite build --watch",
+		"lint": "vue-tsc --noEmit"
+	},
+	"keywords": [
+		"ionic",
+		"vue",
+		"form",
+		"vuelidate"
+	],
+	"author": "",
+	"license": "MIT",
+	"packageManager": "pnpm@10.33.2",
+	"peerDependencies": {
+		"@ionic/vue": ">=7.0.0",
+		"vue": ">=3.0.0"
+	},
+	"devDependencies": {
+		"@ionic/core": "^8.0.0",
+		"@ionic/vue": "^8.0.0",
+		"@types/node": "^25.6.0",
+		"@vitejs/plugin-vue": "^6.0.6",
+		"typescript": "^6.0.3",
+		"vite": "^8.0.10",
+		"vue": "^3.5.33",
+		"vue-tsc": "^3.2.7"
+	},
+	"dependencies": {
+		"@vuelidate/core": "^2.0.3",
+		"@vuelidate/validators": "^2.0.4"
+	}
+}
