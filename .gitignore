@@ -137,3 +137,25 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Ionic
+.ionic/
+www/
+.sourcemaps/
+
+# Capacitor (falls du später native builds machst)
+android/
+ios/
+# Oder nur die generierten Teile, falls du die Configs committen willst:
+# android/.gradle/
+# android/app/build/
+
+# Vue / Vite
+.vite/
+
+# Editor (falls noch nicht vorhanden)
+.idea/
+*.suo
+*.sw?
+.DS_Store
+Thumbs.db
