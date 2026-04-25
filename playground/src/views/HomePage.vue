@@ -12,6 +12,8 @@ import { keyOutline } from "ionicons/icons";
 import {
 	IftInput,
 	IftHorizontalSplitter,
+	IftVerticalSplitter,
+	IftTextarea,
 	required,
 	email,
 	minLength,
@@ -28,6 +30,7 @@ const state = reactive({
 	city: "",
 	street: "",
 	houseNumber: "",
+	notes: "",
 });
 
 const rules = {
@@ -95,38 +98,29 @@ const submit = async () => {
 			</IftHorizontalSplitter>
 			<IftHorizontalSplitter size-first-cell="8">
 				<template #left>
-					<IftHorizontalSplitter size-first-cell="4">
-						<template #left>
+					<IftVerticalSplitter>
+						<template #top>
 							<IftInput v-model="state.zip" label="PLZ" :validation="v$.zip" />
 						</template>
-						<template #right>
+						<template #bottom>
 							<IftInput
 								v-model="state.street"
 								label="Straße"
 								:validation="v$.street"
 							/>
 						</template>
-					</IftHorizontalSplitter>
+					</IftVerticalSplitter>
 				</template>
 				<template #right>
-					<IftHorizontalSplitter size-first-cell="4">
-						<template #left>
-							<IftInput
-								v-model="state.houseNumber"
-								label="Nr."
-								:validation="v$.houseNumber"
-							/>
-						</template>
-						<template #right>
-							<IftInput
-								v-model="state.city"
-								label="Stadt"
-								:validation="v$.city"
-							/>
-						</template>
-					</IftHorizontalSplitter>
+					<IftTextarea
+						v-model="state.notes"
+						label="Anmerkungen"
+						:show-counter="true"
+						:auto-grow="true"
+					/>
 				</template>
 			</IftHorizontalSplitter>
+
 			<ion-button expand="block" @click="submit"> Absenden </ion-button>
 		</ion-content>
 	</ion-page>
