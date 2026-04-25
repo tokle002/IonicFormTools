@@ -1,15 +1,56 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive } from "vue";
 import {
 	IonPage,
 	IonHeader,
 	IonToolbar,
 	IonTitle,
 	IonContent,
+	IonButton,
 } from "@ionic/vue";
-import { IftInput, IftInputTypes } from "@ionic-form-tools/core";
+import { keyOutline } from "ionicons/icons";
+import {
+	IftInput,
+	IftHorizontalSplitter,
+	required,
+	email,
+	minLength,
+	maxLength,
+} from "@ionic-form-tools/core";
+import useVuelidate from "@vuelidate/core";
 
-const email = ref<string | null>(null);
+const state = reactive({
+	email: "",
+	username: "",
+	firstName: "",
+	lastName: "",
+	zip: "",
+	city: "",
+	street: "",
+	houseNumber: "",
+});
+
+const rules = {
+	email: { required: required(), email: email() },
+	username: {
+		required: required(),
+		minLength: minLength(3),
+		maxLength: maxLength(20),
+	},
+	firstName: { required: required() },
+	lastName: { required: required() },
+	zip: { required: required() },
+	city: { required: required() },
+	street: { required: required() },
+	houseNumber: { required: required() },
+};
+
+const v$ = useVuelidate(rules, state);
+
+const submit = async () => {
+	const valid = await v$.value.$validate();
+	if (valid) console.log("Form valid:", state);
+};
 </script>
 
 <template>
@@ -19,17 +60,74 @@ const email = ref<string | null>(null);
 				<ion-title>IftInput Test</ion-title>
 			</ion-toolbar>
 		</ion-header>
-
 		<ion-content class="ion-padding">
 			<IftInput
-				v-model="email"
-				-
+				v-model="state.email"
 				label="E-Mail"
-				:type="IftInputTypes.Email"
-				:validators="{ required: true, email: true }"
+				type="email"
+				:validation="v$.email"
 			/>
-
-			<pre>{{ email }}</pre>
+			<IftInput
+				v-model="state.username"
+				label="Benutzername"
+				type="password"
+				:icon="keyOutline"
+				:validation="v$.username"
+				:show-counter="true"
+				helper-text="asdas"
+				:clear-input="true"
+			/>
+			<IftHorizontalSplitter size-first-cell="8">
+				<template #left>
+					<IftInput
+						v-model="state.firstName"
+						label="Vorname"
+						:validation="v$.firstName"
+					/>
+				</template>
+				<template #right>
+					<IftInput
+						v-model="state.lastName"
+						label="Nachname"
+						:validation="v$.lastName"
+					/>
+				</template>
+			</IftHorizontalSplitter>
+			<IftHorizontalSplitter size-first-cell="8">
+				<template #left>
+					<IftHorizontalSplitter size-first-cell="4">
+						<template #left>
+							<IftInput v-model="state.zip" label="PLZ" :validation="v$.zip" />
+						</template>
+						<template #right>
+							<IftInput
+								v-model="state.street"
+								label="Straße"
+								:validation="v$.street"
+							/>
+						</template>
+					</IftHorizontalSplitter>
+				</template>
+				<template #right>
+					<IftHorizontalSplitter size-first-cell="4">
+						<template #left>
+							<IftInput
+								v-model="state.houseNumber"
+								label="Nr."
+								:validation="v$.houseNumber"
+							/>
+						</template>
+						<template #right>
+							<IftInput
+								v-model="state.city"
+								label="Stadt"
+								:validation="v$.city"
+							/>
+						</template>
+					</IftHorizontalSplitter>
+				</template>
+			</IftHorizontalSplitter>
+			<ion-button expand="block" @click="submit"> Absenden </ion-button>
 		</ion-content>
 	</ion-page>
 </template>
