@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { IonInput, IonInputPasswordToggle, IonIcon } from "@ionic/vue";
+import { IonInput, IonInputPasswordToggle, IonIcon, IonItem } from "@ionic/vue";
 import type { IonInputCustomEvent, InputInputEventDetail } from "@ionic/core";
 import { IftInputProps } from "../types/IftInputProps";
 
@@ -106,6 +106,7 @@ const handleBlur = () => {
 
 <style scoped>
 ion-input {
-	margin-top: 12px;
+	margin-top: 6px;
+	margin-bottom: 6px;
 }
 </style>

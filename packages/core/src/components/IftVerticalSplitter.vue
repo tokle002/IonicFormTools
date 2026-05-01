@@ -20,9 +20,4 @@ const props = withDefaults(defineProps<IftVerticalSplitterProps>(), {});
 	</ion-grid>
 </template>
 
-<style scoped>
-ion-grid {
-	padding-top: var(--ion-grid-padding, 5px);
-	padding-bottom: var(--ion-grid-padding, 5px);
-}
-</style>
+<style scoped></style>

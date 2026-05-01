@@ -4,7 +4,7 @@ import { IftHorizontalSplitterProps } from "../types/IftHorizontalSplitterProps"
 
 const props = withDefaults(defineProps<IftHorizontalSplitterProps>(), {
 	sizeFirstCell: "6",
-	gap: "10px",
+	gap: "12px",
 });
 </script>
 
@@ -22,11 +22,6 @@ const props = withDefaults(defineProps<IftHorizontalSplitterProps>(), {
 </template>
 
 <style scoped>
-ion-grid {
-	padding-top: var(--ion-grid-padding, 5px);
-	padding-bottom: var(--ion-grid-padding, 5px);
-}
-
 ion-row {
 	gap: v-bind(gap);
 }

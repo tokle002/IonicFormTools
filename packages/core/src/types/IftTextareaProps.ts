@@ -12,7 +12,6 @@ export interface IftTextareaProps extends IftBaseProps {
 	error?: boolean;
 	errorText?: string;
 	helperText?: string;
-	fill?: "outline" | "solid";
-	labelPlacement?: "start" | "end" | "floating" | "stacked" | "fixed";
 	shape?: "round" | "square";
+	rows?: number;
 }

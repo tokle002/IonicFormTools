@@ -13,8 +13,6 @@ export interface IftInputProps extends IftBaseProps {
 	autoCapitalize?: "off" | "none" | "on" | "sentences" | "words" | "characters";
 	autocomplete?: AutocompleteTypes;
 	clearInput?: boolean;
-	fill?: "outline" | "solid";
-	labelPlacement?: "start" | "end" | "floating" | "stacked" | "fixed";
 	icon?: string;
 	color?: Color;
 }
